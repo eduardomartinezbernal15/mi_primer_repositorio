@@ -121,8 +121,9 @@ public class Matriz {
         };
 
         Matriz matriz = new Matriz(valores);
-        System.out.println("Dimensiones: " + matriz.getDimension()[0] + "x" + matriz.getDimension()[1]);
-        System.out.println("Matriz:");
+        System.out.println("Dimensiones de la primera matriz creada a partir de una tabla irregular: "
+                + matriz.getDimension()[0] + " filas x " + matriz.getDimension()[1] + " columnas");
+        System.out.println("Contenido de la primera matriz:");
         System.out.println(matriz);
 
         double[][] datos = {
