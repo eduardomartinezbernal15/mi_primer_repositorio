@@ -197,6 +197,24 @@ public class Matriz {
         return new Matriz(transpuesta);
     }
 
+    /**
+     * Devuelve una nueva matriz que es la traspuesta de la matriz
+     * pasada como argumento.
+     *
+     * Si el argumento es null, el método devuelve null.
+     *
+     * @param m la matriz que se quiere trasponer
+     * @return la matriz traspuesta o null si el argumento es null
+     */
+    public static Matriz traspuesta(Matriz m) {
+
+        if (m == null) {
+            return null;
+        }
+
+        return m.traspuesta();
+    }
+
     public static void main(String[] args) {
         double[][] valores = {
             {1.0, 2.0, 3.0},
