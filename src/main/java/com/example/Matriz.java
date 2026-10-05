@@ -144,6 +144,38 @@ public class Matriz {
         return new Matriz(suma);
     }
 
+    /**
+     * Versión estática de la suma: suma las dos matrices pasadas
+     * como argumento y devuelve la matriz resultante.
+     *
+     * Devuelve null si cualquiera de los argumentos es null o si
+     * sus dimensiones no coinciden.
+     *
+     * @param a primera matriz
+     * @param b segunda matriz
+     * @return matriz suma o null si no es posible
+     */
+    public static Matriz sumar(Matriz a, Matriz b) {
+
+        if (a == null || b == null) {
+            return null;
+        }
+
+        if (a.filas != b.filas || a.columnas != b.columnas) {
+            return null;
+        }
+
+        double[][] suma = new double[a.filas][a.columnas];
+
+        for (int i = 0; i < a.filas; i++) {
+            for (int j = 0; j < a.columnas; j++) {
+                suma[i][j] = a.datos[i][j] + b.datos[i][j];
+            }
+        }
+
+        return new Matriz(suma);
+    }
+
     public static void main(String[] args) {
         double[][] valores = {
             {1.0, 2.0, 3.0},

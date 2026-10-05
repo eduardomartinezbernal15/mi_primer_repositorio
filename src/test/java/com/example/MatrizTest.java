@@ -189,4 +189,60 @@ public class MatrizTest {
         assertNull(a.sumar(b));
     }
 
+    @Test
+    public void sumarEstaticoMatricesMismasDimensiones() {
+
+        double[][] datos1 = {
+            { 1.0, 0.5, 2.0 }
+        };
+
+        double[][] datos2 = {
+            { 0.5, 1.5, -2.0 }
+        };
+
+        Matriz a = new Matriz(datos1);
+        Matriz b = new Matriz(datos2);
+
+        Matriz s = Matriz.sumar(a, b);
+
+        assertNotNull(s);
+        assertArrayEquals(new int[] { 1, 3 }, s.getDimension());
+
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 3; j++) {
+                assertEquals(datos1[i][j] + datos2[i][j], s.getElemento(i, j), 1e-9);
+            }
+        }
+    }
+
+    @Test
+    public void sumarEstaticoDevuelveNullSiAlgunoNull() {
+
+        double[][] datos = {
+            { 1.0 }
+        };
+
+        Matriz m = new Matriz(datos);
+
+        assertNull(Matriz.sumar(null, m));
+        assertNull(Matriz.sumar(m, null));
+    }
+
+    @Test
+    public void sumarEstaticoDevuelveNullSiDimensionesNoCoinciden() {
+
+        double[][] datos1 = {
+            { 1.0, 2.0 }
+        };
+
+        double[][] datos2 = {
+            { 1.0 }
+        };
+
+        Matriz a = new Matriz(datos1);
+        Matriz b = new Matriz(datos2);
+
+        assertNull(Matriz.sumar(a, b));
+    }
+
 }
