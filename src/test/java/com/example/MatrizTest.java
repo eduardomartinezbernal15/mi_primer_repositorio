@@ -2,6 +2,8 @@ package com.example;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 
@@ -129,4 +131,62 @@ public class MatrizTest {
 
         new Matriz(datos);
     }
+    @Test
+    public void sumarInstanciaMatricesMismasDimensiones() {
+
+        double[][] datos1 = {
+            { 1.0, 2.0 },
+            { 3.0, 4.0 }
+        };
+
+        double[][] datos2 = {
+            { 5.0, 6.0 },
+            { 7.0, 8.0 }
+        };
+
+        Matriz a = new Matriz(datos1);
+        Matriz b = new Matriz(datos2);
+
+        Matriz s = a.sumar(b);
+
+        assertNotNull(s);
+        assertArrayEquals(new int[] { 2, 2 }, s.getDimension());
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                assertEquals(datos1[i][j] + datos2[i][j], s.getElemento(i, j), 1e-9);
+            }
+        }
+    }
+
+    @Test
+    public void sumarInstanciaDevuelveNullSiArgumentoNull() {
+
+        double[][] datos = {
+            { 1.0, 2.0 }
+        };
+
+        Matriz m = new Matriz(datos);
+
+        assertNull(m.sumar(null));
+    }
+
+    @Test
+    public void sumarInstanciaDevuelveNullSiDimensionesNoCoinciden() {
+
+        double[][] datos1 = {
+            { 1.0, 2.0 }
+        };
+
+        double[][] datos2 = {
+            { 1.0 },
+            { 2.0 }
+        };
+
+        Matriz a = new Matriz(datos1); // 1x2
+        Matriz b = new Matriz(datos2); // 2x1
+
+        assertNull(a.sumar(b));
+    }
+
 }

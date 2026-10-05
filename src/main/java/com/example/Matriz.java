@@ -113,6 +113,37 @@ public class Matriz {
         return resultado.toString();
     }    
 
+    /**
+     * Devuelve una nueva Matriz que es la suma de esta matriz y la
+     * matriz pasada como argumento.
+     *
+     * Si el argumento es null o sus dimensiones no coinciden con
+     * las de esta matriz, el método devuelve null.
+     *
+     * @param otra la matriz a sumar
+     * @return la matriz suma o null si no es posible sumar
+     */
+    public Matriz sumar(Matriz otra) {
+
+        if (otra == null) {
+            return null;
+        }
+
+        if (this.filas != otra.filas || this.columnas != otra.columnas) {
+            return null;
+        }
+
+        double[][] suma = new double[this.filas][this.columnas];
+
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                suma[i][j] = this.datos[i][j] + otra.datos[i][j];
+            }
+        }
+
+        return new Matriz(suma);
+    }
+
     public static void main(String[] args) {
         double[][] valores = {
             {1.0, 2.0, 3.0},
