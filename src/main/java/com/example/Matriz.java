@@ -176,6 +176,27 @@ public class Matriz {
         return new Matriz(suma);
     }
 
+    /**
+     * Devuelve una nueva matriz que es la traspuesta de esta matriz.
+     *
+     * Si la matriz original tiene dimensiones filas x columnas,
+     * la resultante tendrá columnas x filas y cada elemento cumple:
+     * traspuesta[j][i] = original[i][j].
+     *
+     * @return la matriz traspuesta
+     */
+    public Matriz traspuesta() {
+        double[][] transpuesta = new double[this.columnas][this.filas];
+
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                transpuesta[j][i] = this.datos[i][j];
+            }
+        }
+
+        return new Matriz(transpuesta);
+    }
+
     public static void main(String[] args) {
         double[][] valores = {
             {1.0, 2.0, 3.0},

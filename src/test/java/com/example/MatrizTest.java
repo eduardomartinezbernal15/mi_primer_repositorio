@@ -245,4 +245,25 @@ public class MatrizTest {
         assertNull(Matriz.sumar(a, b));
     }
 
+    @Test
+    public void traspuestaInstanciaMatrizRectangular() {
+
+        double[][] datos = {
+            { 1.0, 2.0, 3.0 },
+            { 4.0, 5.0, 6.0 }
+        };
+
+        Matriz m = new Matriz(datos);
+        Matriz t = m.traspuesta();
+
+        assertNotNull(t);
+        assertArrayEquals(new int[] { 3, 2 }, t.getDimension());
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                assertEquals(datos[j][i], t.getElemento(i, j), 1e-9);
+            }
+        }
+    }
+
 }
